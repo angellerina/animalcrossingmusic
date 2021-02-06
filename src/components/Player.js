@@ -7,11 +7,13 @@ import {
   faPause,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Player = (prop) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  //Ref
-  const audioRef = useRef(null);
-
+const Player = ({
+  audioRef,
+  setSongInfo,
+  songInfo,
+  setIsPlaying,
+  isPlaying,
+}) => {
   //Event Handlers
   const playSongHandler = () => {
     if (isPlaying) {
@@ -21,11 +23,6 @@ const Player = (prop) => {
       audioRef.current.play();
       setIsPlaying(!isPlaying);
     }
-  };
-  const timeUpdateHandler = (e) => {
-    const current = e.target.currentTime;
-    const duration = e.target.duration;
-    setSongInfo({ ...songInfo, currentTime: current, duration });
   };
 
   const getTime = (time) => {
@@ -38,12 +35,6 @@ const Player = (prop) => {
     audioRef.current.currentTime = e.target.value;
     setSongInfo({ ...songInfo, currentTime: e.target.value });
   };
-
-  //State
-  const [songInfo, setSongInfo] = useState({
-    currentTime: 0,
-    duration: 0,
-  });
 
   return (
     <div className="player">
@@ -72,12 +63,6 @@ const Player = (prop) => {
           icon={faAngleRight}
         />
       </div>
-      <audio
-        onTimeUpdate={timeUpdateHandler}
-        onLoadedMetadata={timeUpdateHandler}
-        ref={audioRef}
-        src={prop.audio}
-      ></audio>
     </div>
   );
 };
