@@ -1,8 +1,11 @@
 import React from "react";
 
-const LibrarySong = ({ image, name }) => {
+const LibrarySong = ({ image, name, song, setCurrentSong }) => {
+  const songSelectHandler = () => {
+    setCurrentSong(song);
+  };
   return (
-    <div className="library-song">
+    <div onClick={songSelectHandler} className="library-song">
       <img src={image} alt="cover" />
       <div className="song-description">
         <h3>{name}</h3>

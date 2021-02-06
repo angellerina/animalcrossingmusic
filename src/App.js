@@ -40,7 +40,7 @@ function App() {
       <div className="App">
         <Song image={image} name={song_name} />
         <Player audio={currentSong["music_uri"]} />
-        <Library songs={songs} />
+        <Library songs={songs} setCurrentSong={setCurrentSong} />
       </div>
     );
   }
