@@ -1,29 +1,19 @@
 import React from "react";
+import { playAudio } from "../util";
 
 const LibrarySong = ({
   image,
   name,
   song,
-  songs,
   setCurrentSong,
   audioRef,
   isPlaying,
-  id,
 }) => {
   //onClick function
   const songSelectHandler = () => {
     setCurrentSong(song);
-
-    //check if song is playing
-    if (isPlaying) {
-      const playPromise = audioRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.then((audio) => {
-          audioRef.current.play();
-        });
-      }
-    }
   };
+
   return (
     <div
       onClick={songSelectHandler}
