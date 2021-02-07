@@ -13,7 +13,6 @@ const LibrarySong = ({
   //onClick function
   const songSelectHandler = () => {
     setCurrentSong(song);
-    audioRef.current.play();
 
     //check if song is playing
     if (isPlaying) {

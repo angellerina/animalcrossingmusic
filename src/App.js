@@ -4,10 +4,13 @@ import "./styles/app.scss";
 import Player from "./components/Player";
 import Song from "./components/Song";
 import Library from "./components/Library";
+import Nav from "./components/Nav";
 
 function App(prop) {
   //Ref
   const audioRef = useRef(null);
+
+  //State
   const [songs, setSongs] = useState();
   const [currentSong, setCurrentSong] = useState();
   const [loading, setLoading] = useState(true);
@@ -16,15 +19,16 @@ function App(prop) {
     currentTime: 0,
     duration: 0,
   });
-
-  let image;
-  let song_name;
+  const [libraryStatus, setLibraryStatus] = useState(false);
 
   const timeUpdateHandler = (e) => {
     const current = e.target.currentTime;
     const duration = e.target.duration;
     setSongInfo({ ...songInfo, currentTime: current, duration });
   };
+
+  let image;
+  let song_name;
 
   // async function to fetch api data as json and assign it to variables
   async function fetchUrl(url) {
@@ -57,6 +61,10 @@ function App(prop) {
 
     return (
       <div className="App">
+        <Nav
+          libraryStatus={libraryStatus}
+          setLibraryStatus={setLibraryStatus}
+        />
         <Song image={image} name={song_name} />
         <Player
           audioRef={audioRef}
@@ -71,6 +79,7 @@ function App(prop) {
           songs={songs}
           setCurrentSong={setCurrentSong}
           isPlaying={isPlaying}
+          libraryStatus={libraryStatus}
         />
         <audio
           onTimeUpdate={timeUpdateHandler}
