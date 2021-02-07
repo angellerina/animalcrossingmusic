@@ -49,6 +49,12 @@ function App(prop) {
     image = currentSong["image_uri"];
     song_name = currentSong["name"]["name-USen"];
 
+    for (var i = 0; i < songs.length; i++) {
+      songs[i].active = false;
+    }
+
+    currentSong.active = true;
+
     return (
       <div className="App">
         <Song image={image} name={song_name} />

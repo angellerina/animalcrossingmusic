@@ -14,6 +14,7 @@ const Library = ({ songs, setCurrentSong, audioRef, isPlaying }) => {
             name={song.name["name-USen"]}
             image={song["image_uri"]}
             song={song}
+            songs={songs}
             audioRef={audioRef}
             isPlaying={isPlaying}
           />
