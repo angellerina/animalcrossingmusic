@@ -73,6 +73,9 @@ function App(prop) {
           songInfo={songInfo}
           setIsPlaying={setIsPlaying}
           isPlaying={isPlaying}
+          setCurrentSong={setCurrentSong}
+          currentSong={currentSong}
+          songs={songs}
         />
         <Library
           audioRef={audioRef}
