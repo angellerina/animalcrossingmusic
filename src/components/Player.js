@@ -98,6 +98,7 @@ const Player = ({
           icon={faAngleRight}
         />
       </div>
+      <footer>Made with love by Rina</footer>
     </div>
   );
 };
