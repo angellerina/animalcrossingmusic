@@ -1,13 +1,12 @@
 .library {
   position: fixed;
   box-shadow: 2px 2px 50px rgb(221, 221, 221);
-  border-radius: 1rem;
   top: 0;
   left: 0;
   width: 20rem;
   height: 100%;
   overflow: scroll;
-  background: white;
+  background: rgb(255, 224, 158);
   transform: translateX(-100%);
   transition: all 0.5s ease;
   opacity: 0;
@@ -28,7 +27,7 @@
     width: 30%;
   }
   &:hover {
-    background: rgb(235, 235, 235);
+    background: rgb(255, 234, 196);
   }
 }
 
@@ -57,13 +56,13 @@
   background: transparent;
 }
 *::-webkit-scrollbar-thumb {
-  background-color: rgba(155, 155, 155, 0.7);
+  background-color: rgba(255, 164, 28, 0.7);
   border-radius: 20px;
   border: transparent;
 }
 
 .selected {
-  background-color: rgb(223, 205, 255);
+  background-color: ffc87f;
 }
 
 .active-library {

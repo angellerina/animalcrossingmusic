@@ -71,6 +71,7 @@ function App(prop) {
 
     return (
       <div className="App">
+        <div className="wave"></div>
         <Nav
           libraryStatus={libraryStatus}
           setLibraryStatus={setLibraryStatus}
