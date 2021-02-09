@@ -47,13 +47,13 @@ function App(prop) {
 
     // set variables for songs, currentsong, and declare that loading is finished
     setSongs(Object.values(json));
-    setCurrentSong(Object.values(json)[0]);
+    setCurrentSong(Object.values(json)[2]);
     setLoading(false);
   }
 
   // calling fetching function for songs on page load
   useEffect(() => {
-    const apiURL = `http://acnhapi.com/v1/songs`;
+    const apiURL = `https://acnhapi.com/v1/songs`;
     fetchUrl(apiURL);
   }, []);
 
