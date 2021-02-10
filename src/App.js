@@ -69,14 +69,23 @@ function App(prop) {
 
     currentSong.active = true;
 
+    //Auto Skip function
+    const songEndHandler = async () => {
+      let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+      await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+      if (isPlaying) audioRef.current.load();
+    };
+
     return (
       <div className="App">
         <div className="wave"></div>
-        <Nav
-          libraryStatus={libraryStatus}
-          setLibraryStatus={setLibraryStatus}
-        />
-        <Song image={image} name={song_name} />
+        <div onClick={() => setLibraryStatus(!libraryStatus)}>
+          <Nav
+            libraryStatus={libraryStatus}
+            setLibraryStatus={setLibraryStatus}
+          />
+          <Song image={image} name={song_name} />
+        </div>
         <Player
           audioRef={audioRef}
           audio={currentSong["music_uri"]}
@@ -100,6 +109,7 @@ function App(prop) {
           onLoadedMetadata={timeUpdateHandler}
           ref={audioRef}
           src={currentSong["music_uri"]}
+          onEnded={songEndHandler}
         ></audio>
       </div>
     );

@@ -1,5 +1,4 @@
 import React from "react";
-import { playAudio } from "../util";
 
 const LibrarySong = ({
   image,
@@ -10,10 +9,12 @@ const LibrarySong = ({
   isPlaying,
 }) => {
   //onClick function
-  const songSelectHandler = () => {
-    setCurrentSong(song);
+  const songSelectHandler = async () => {
+    await setCurrentSong(song);
     if (isPlaying) audioRef.current.play();
   };
+  //check if the song is playing
+  if (isPlaying) audioRef.current.play();
 
   return (
     <div
