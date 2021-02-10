@@ -77,14 +77,18 @@ function App(prop) {
     };
 
     return (
-      <div className="App">
+      <div className={`App ${libraryStatus ? "library-active" : ""}`}>
         <div className="wave"></div>
         <div onClick={() => setLibraryStatus(!libraryStatus)}>
           <Nav
             libraryStatus={libraryStatus}
             setLibraryStatus={setLibraryStatus}
           />
-          <Song image={image} name={song_name} />
+          <Song
+            image={image}
+            name={song_name}
+            rotate={isPlaying ? "rotateSong" : ""}
+          />
         </div>
         <Player
           audioRef={audioRef}
